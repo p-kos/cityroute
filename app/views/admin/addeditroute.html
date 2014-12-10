@@ -1,0 +1,81 @@
+<a href="#/admin/Parent/{{Parent.ParentId}}/ItemDetails/{{Parent._id}}">Back</a>
+<form name="newItemForm">
+  <div class="form">
+
+    <div class="formRow">
+      <div class="formItemLabel">
+        <label for="name">Name</label>
+      </div>
+      <div class="formItemField">
+        <input ng-model="Bus.Name" id="name" placeholder="name" required="required">
+      </div>
+    </div>
+
+    <div class="formRow">
+      <div class="formItemLabel">
+        <label for="latlong">Start Latitude, Longitude</label>
+      </div>
+      <div class="formItemField">
+        <input ng-model="LatLong" id="latlong" placeholder="start Latitude, Longitude" required="required" pattern="^(\-?\d+(\.\d+)?),\s*(\-?\d+(\.\d+)?)$">
+        <input type="checkbox" ng-model="setStart" value="true" title="Set Start" > Set Start
+      </div>
+    </div>
+
+    <div class="formRow">
+      <div class="formItemLabel">
+        <label for="color">Color</label>
+      </div>
+      <div class="formItemField">
+        <input type="color" id="color" ng-model="Bus.Color" placeholder="Color">
+      </div>
+    </div>
+
+    <div class="formRow">
+      <div class="formItemLabel">
+        <label for="description">Description</label>
+      </div>
+      <div class="formItemField">
+        <input ng-model="Bus.Description" id="description" placeholder="Description" >
+      </div>
+    </div>
+
+    <div class="formButtonsRow">
+      <div class="formButtonCell">
+        <button ng-click="reset()" class="btnReset">Reset</button>
+      </div>
+      <div class="formButtonCell">
+        <button ng-click="save()" class="btnSave" ng-disabled="!newItemForm.$valid">Save</button>
+      </div>
+    </div>
+  </div>
+</form>
+<h3>Coords</h3>
+<hr>
+
+<div class="map" style="float:left; width:50%">
+  <div id="message"></div>
+  <div id="map"></div>
+</div>
+
+<div class="coordsListTable" style="float:left; width: 50%" >
+  <div class="tableHeader">
+    <div class="cell" style="width:20px">#</div>
+    <div class="cell" style="width:50px">Name</div>
+    <div class="cell" style="width:200px">Latitude</div>
+    <div class="cell" style="width:200px">Longitude</div>
+  </div>
+  <div class="row" ng-repeat="coord in Coords">
+    <div class="cell" style="width:20px">{{$index + 1}}</div>
+    <div class="cell" style="width:50px">{{coord.Name}}</div>
+    <div class="cell" style="width:200px">{{coord.Latitude}}</div>
+    <div class="cell" style="width:200px">{{coord.Longitude}}</div>
+  </div>
+</div>
+
+<div class="cell">
+  <img src="images/delete.png" class="rowbtn" ng-click="deleteCoord()" />
+</div>
+
+
+
+

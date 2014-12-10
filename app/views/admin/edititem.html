@@ -1,0 +1,66 @@
+<a href="#/admin/Parent/{{Parent.ParentId}}/ItemDetails/{{Parent._id}}">Back</a>
+
+<form name="newItemForm">
+  <div class="form">
+
+    <div class="formRow">
+      <div class="formItemLabel">
+        <label for="name">Name</label>
+      </div>
+      <div class="formItemField">
+        <input ng-model="Item.Name" id="name" placeholder="name" required="required">
+      </div>
+    </div>
+
+    <div class="formRow">
+      <div class="formItemLabel">
+        <label for="shortname">Short Name</label>
+      </div>
+      <div class="newItemField">
+        <input ng-model="Item.ShortName" id="shortname" placeholder="Short Name" required="required">
+      </div>
+    </div>
+
+
+    <div class="formRow">
+      <div class="formItemLabel">
+        <label for="latlong">Latitude,Longitude</label>
+      </div>
+      <div class="formItemField">
+        <input ng-model="LatLong" id="latlong" placeholder="Latitude,Longitude" pattern="^(\-?\d+(\.\d+)?),\s*(\-?\d+(\.\d+)?)$">
+        <img ng-click="showMap()" id="btnShowMap" src="../../../../../app/images/maps.png" title="Show Map">
+      </div>
+    </div>
+
+    <div class="formRow">
+      <div class="formItemLabel">
+        <label for="color">Color</label>
+      </div>
+      <div class="formItemField">
+        <input ng-model="Item.Color" id="color" placeholder="Color" >
+      </div>
+    </div>
+
+    <div class="formRow">
+      <div class="formItemLabel">
+        <label for="description">Description</label>
+      </div>
+      <div class="formItemField">
+        <input ng-model="Item.Description" id="description" placeholder="Description" >
+      </div>
+    </div>
+
+    <div class="formButtonsRow">
+      <div class="formButtonCell">
+        <button ng-click="reset()" class="btnReset">Reset</button>
+      </div>
+      <div class="formButtonCell">
+        <button ng-click="save()" class="btnSave" ng-disabled="!newItemForm.$valid">Save</button>
+      </div>
+    </div>
+  </div>
+  <div class="map">
+    <div id="message"></div>
+    <div id="map"></div>
+  </div>
+</form>

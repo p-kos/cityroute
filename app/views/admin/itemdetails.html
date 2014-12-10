@@ -1,0 +1,40 @@
+<a ng-href="{{ItemDetailsRoute}}" ng-show="Item">Back</a>
+<div ng-show="Item">
+  <h3>{{Item.Name}} ({{Item.ShortName}})</h3>
+  <div ng-show="Item.Latitude">
+    <label>Coords:</label>
+    <span>{{Item.Latitude}}, {{Item.Longitude}}</span>
+  </div>
+  <div ng-bind="Item.Description"></div>
+  <div ng-bind="Item.Color"></div>
+</div>
+<h4>Items</h4>
+<hr>
+<div class="listTable">
+  <div class="tableHeader">
+  </div>
+  <div class="row" ng-repeat="item in Items">
+    <div class="cell" style="width:20px">{{$index + 1}}</div>
+    <div class="cell" style="width:200px">
+      <a ng-href="#/admin{{Item.detailUrl}}/ItemDetails/{{item._id}}">
+        {{item.Name}}
+      </a>
+    </div>
+    <div class="cell" style="width:100px">{{item.ShortName}}</div>
+    <div class="cell" style="width:200px">{{item.Latitude}}</div>
+    <div class="cell" style="width: 200px">{{item.Longitude}}</div>
+    <div class="cell">
+      <a ng-href="{{item.urlToEdit}}">
+        <img src="../../images/update.png" class="rowbtn" />
+      </a>
+    </div>
+    <div class="cell">
+      <img src="../../images/delete.png" class="rowbtn" ng-click="delete($index)" />
+    </div>
+  </div>
+</div>
+<div class="toolBtns">
+  <a ng-href="#/admin{{Item.detailUrl}}/addNewItem">
+    <img src="../../images/add.png" class="rowbtn" />
+  </a>
+</div>
